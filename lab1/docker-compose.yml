@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  http-file-server:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - SERVE_DIR=/srv/site
+    volumes:
+      - ./site_content:/srv/site
+    restart: unless-stopped
