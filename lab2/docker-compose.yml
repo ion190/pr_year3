@@ -1,0 +1,56 @@
+version: "3.9"
+services:
+  single:
+    build: .
+    command: ["python", "/app/server_single.py"]
+    ports: ["8000:8000"]
+    volumes:
+      - ./data:/app/data:rw
+    working_dir: /app/data
+    restart: unless-stopped
+
+  threaded:
+    build: .
+    command: ["python", "/app/server_threaded.py"]
+    environment:
+      DEMO_RACE: "false"
+      RATE_LIMIT: "999" # requests per second per IP
+      SIM_DELAY_S: "1.0"
+    ports: ["8001:8000"]
+    volumes:
+      - ./data:/app/data:rw
+    working_dir: /app/data
+    restart: unless-stopped
+
+  # ---------- against single-threaded ----------
+  index_single:
+    build: .
+    command: ["python", "/app/index.py"]
+    environment:
+      BASE_URL: "http://single:8000"
+      CONCURRENCY: "10"
+    depends_on: ["single"]
+
+  # ---------- against multithreaded ----------
+  index_threaded:
+    build: .
+    command: ["python", "/app/index.py"]
+    environment:
+      BASE_URL: "http://threaded:8000"
+      CONCURRENCY: "10"
+    depends_on: ["threaded"]
+
+  # ---------- separate rate-limiting test program ----------
+  rate_test:
+    build: .
+    command: ["python", "/app/rate_limit_test.py"]
+    environment:
+      TARGET: "http://threaded:8000/"
+      BURST_REQUESTS: "120"
+      GOOD_TOTAL: "60"
+      GOOD_RATE: "5"
+    depends_on: ["threaded"]
+
+networks:
+  default:
+    name: lab-http-net
