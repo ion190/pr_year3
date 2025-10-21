@@ -11,6 +11,7 @@ lab1/
 ├─ Dockerfile
 ├─ docker-compose.yml
 ├─ server.py
+├─ client.py
 ├─ README.md
 ```
 
@@ -38,7 +39,7 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY server.py create_sample_content.py client.py ./
+COPY server.py client.py ./
 
 EXPOSE 8000
 

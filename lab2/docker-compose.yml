@@ -14,7 +14,7 @@ services:
     command: ["python", "/app/server_threaded.py"]
     environment:
       DEMO_RACE: "false"
-      RATE_LIMIT: "999" # requests per second per IP
+      RATE_LIMIT: "5" # requests per second per IP
       SIM_DELAY_S: "1.0"
     ports: ["8001:8000"]
     volumes:
@@ -46,7 +46,7 @@ services:
     command: ["python", "/app/rate_limit_test.py"]
     environment:
       TARGET: "http://threaded:8000/"
-      BURST_REQUESTS: "120"
+      BURST_REQUESTS: "200"
       GOOD_TOTAL: "60"
       GOOD_RATE: "5"
     depends_on: ["threaded"]
