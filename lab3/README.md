@@ -10,7 +10,7 @@ This repository implements the Spring 2025 **Memory Scramble** lab with a clean,
 
 
 
-## Quick Start
+## Start
 
 ```bash
 npm install
@@ -125,14 +125,6 @@ All endpoints return **plain text** (`BOARD_STATE`) unless stated otherwise.
 - Waiters are **woken** when the card is relinquished (2-E) **or removed** (3-A).  
 - **3-B** flips down prior mismatched face-ups at the *start* of the player’s next *first* flip.
 - `watchOnce()` resolves on *any* change and is re-registered by clients as needed.
-
----
-
-**Note about stale files**: If you previously had a test file and deleted it, its compiled JS may still exist in `dist/`. Ensure you clean:
-```bash
-rm -rf dist && npm test
-```
-or set `"test": "npm run clean && tsc && node --test dist/test/*.js"`.
 
 ---
 
