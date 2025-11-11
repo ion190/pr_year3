@@ -1,13 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { boardFromCards, countToken, expectReject } from './helpers.js';
+import { boardFromCards, countToken, expectReject, withTimeout } from './helpers.js';
 import { Board } from '../src/board.js';
-
-/**
- * Layouts used in tests:
- *  - 2x2: [A, A, B, B] at (0,0),(0,1),(1,0),(1,1)
- *  - 1x2: [A, B] at (0,0),(0,1)
- */
 
 test('initial look shows all down', async () => {
   const board = await boardFromCards(2, 2, ['A','A','B','B']);
@@ -99,6 +93,18 @@ test('3-A matched pair removed at next first', async () => {
   const lines = s.split('\n').slice(1);
   assert.equal(lines[0], 'none');
   assert.equal(lines[1], 'none');
+});
+
+test('1-D: waiter resumes after mismatch frees control', async () => {
+  const board = await boardFromCards(1, 2, ['A','B']);
+  await board.flip('p1', 0, 0);
+  const waiter = board.flip('p2', 0, 0);
+  await withTimeout((async () => {
+    try { await board.flip('p1', 0, 0); } catch { }
+  })(), 500);
+  await withTimeout(waiter, 500);
+  const s = board.look('p2');
+  assert.ok(s.includes('\nmy A'));
 });
 
 test('mapAll: replaces labels but preserves faceUp/controller state', async () => {

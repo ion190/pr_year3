@@ -149,28 +149,24 @@ Flip attempts=800, successes=109, failures=691, elapsedMs=283
 Output:
 
 ```bash
-✔ initial look shows all down (11.928783ms)
-✔ 1-B first card turns up + controlled (my) (4.233161ms)
-✔ 2-B fail: second card is currently controlled (same square) (3.071331ms)
-✔ 1-C first card already up & uncontrolled => take control (3.154917ms)
-✔ 1-D waiting: player waits while card controlled by another, resumes when relinquished (2.7451ms)
-✔ 2-A second is empty -> fail; first remains up, uncontrolled (4.622455ms)
-✔ 2-C turning second card face-up before evaluating match (8.414182ms)
-✔ 2-E mismatch leaves both up & uncontrolled; 3-B flips them down at next first (3.690169ms)
-✔ 3-A matched pair removed at next first (3.612638ms)
-✔ mapAll: replaces labels but preserves faceUp/controller state (7.75578ms)
-✔ watchOnce resolves when a card is turned face up (12.702565ms)
-✔ watchOnce resolves when prior mismatched cards are flipped down (3-B) (3.958535ms)
-✔ watchOnce resolves when a matched pair is removed (3-A) (4.758251ms)
-✔ watchOnce resolves when mapAll changes labels (6.822483ms)
-✔ 1-D: waiter resumes after mismatch frees control (5.809125ms)
-✔ /Users/ion/Desktop/Archive/UniversityUTM/Y3/PR/pr_year3/lab3/dist/test/helpers.js (64.542506ms)
-ℹ tests 16
+✔ initial look shows all down (12.388717ms)
+✔ 1-B first card turns up + controlled (my) (4.380067ms)
+✔ 2-B fail: second card is currently controlled (same square) (2.818719ms)
+✔ 1-C first card already up & uncontrolled => take control (2.491838ms)
+✔ 1-D waiting: player waits while card controlled by another, resumes when relinquished (3.012085ms)
+✔ 2-A second is empty -> fail; first remains up, uncontrolled (5.563926ms)
+✔ 2-C turning second card face-up before evaluating match (3.521183ms)
+✔ 2-E mismatch leaves both up & uncontrolled; 3-B flips them down at next first (2.827598ms)
+✔ 3-A matched pair removed at next first (2.95848ms)
+✔ 1-D: waiter resumes after mismatch frees control (7.855029ms)
+✔ mapAll: replaces labels but preserves faceUp/controller state (2.924616ms)
+✔ /Users/ion/Desktop/Archive/UniversityUTM/Y3/PR/pr_year3/lab3/dist/test/helpers.js (65.032649ms)
+ℹ tests 12
 ℹ suites 0
-ℹ pass 16
+ℹ pass 12
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 175.328698
+ℹ duration_ms 152.02063
 ```
