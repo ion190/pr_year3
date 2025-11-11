@@ -1,12 +1,12 @@
+# docker-compose.yml
 version: "3.8"
 services:
-  http-file-server:
+  server:
     build: .
     ports:
-      - "8000:8000"
+      - "8080:8080"
     environment:
-      - PORT=8000
-      - SERVE_DIR=/srv/site
-    volumes:
-      - ./site_content:/srv/site
+      - NODE_ENV=production
+    # override the board or port here if you want
+    command: ["8080", "boards/perfect.txt"]
     restart: unless-stopped
