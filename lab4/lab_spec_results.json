@@ -1,0 +1,27 @@
+[
+  {
+    "quorum": 1,
+    "avg_ms": 242.66281604766846,
+    "successes": 100
+  },
+  {
+    "quorum": 2,
+    "avg_ms": 344.23667907714844,
+    "successes": 100
+  },
+  {
+    "quorum": 3,
+    "avg_ms": 507.85070419311523,
+    "successes": 100
+  },
+  {
+    "quorum": 4,
+    "avg_ms": 683.0700755119324,
+    "successes": 100
+  },
+  {
+    "quorum": 5,
+    "avg_ms": 881.8579292297363,
+    "successes": 100
+  }
+]

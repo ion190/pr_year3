@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+httpx[http2]
+pydantic
+pytest
+numpy
+matplotlib
+requests
